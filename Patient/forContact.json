@@ -1,0 +1,132 @@
+{ "resourceType": "Patient",
+    "identifier": [ {
+    "system": "https://www.dicom.org.tw/cs/identityCardNumber_tw",
+    "value": "N160554208"  } ],
+  "active": true,
+  "name": [ {
+    "text": "梁志偉",
+    "family": "梁",
+    "given": [ "志偉" ]
+  } ],
+  "telecom": [ {
+    "system": "email",
+    "value": "yangwei@hotmail.com"
+  }, {
+    "system": "phone",
+    "value": "0948749847",
+    "use": "mobile"
+  }, {
+    "system": "url",
+    "value": "https://line.me/ti/p/OoF2T5be8V"
+  } ],
+  "gender": "male",
+  "birthDate": "1990-04-11",
+  "address": [ {
+    "text": "814 臺灣省高雄市仁武區四維路1段87號",
+    "line": [ "四維路1段87號" ],
+    "city": "仁武區",
+    "district": "高雄市",
+    "postalCode": "814",
+    "country": "臺灣省"
+  } ],
+  "contact": [ {
+    "relationship": [ {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+        "code": "I"
+      } ],
+      "text": "Insurance Company"
+    } ],
+    "name": {
+      "text": "周淑貞",
+      "family": "周",
+      "given": [ "淑貞" ]    },
+    "telecom": [ {
+      "system": "email",
+      "value": "taoyan@yahoo.com"  }, 
+    {
+      "system": "phone",
+      "value": "0912330571",
+      "use": "mobile"
+    }, 
+    {
+      "system": "url",
+      "value": "https://line.me/ti/p/xNjEbVBMRY"
+    } ],
+    "address": {
+      "text": "264 臺灣省宜蘭縣員山鄉大同路4段2號",
+      "line": [ "大同路4段2號" ],
+      "city": "員山鄉",
+      "district": "宜蘭縣",
+      "postalCode": "264",
+      "country": "臺灣省"
+    },
+    "gender": "female"
+  }, {
+    "relationship": [ {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+        "code": "I"
+      } ],
+      "text": "Insurance Company"
+    } ],
+    "name": {
+      "text": "孫承翰",
+      "family": "孫",
+      "given": [ "承翰" ]
+    },
+    "telecom": [ {
+      "system": "email",
+      "value": "bcui@hotmail.com"
+    }, {
+      "system": "phone",
+      "value": "0928357961",
+      "use": "mobile"
+    }, {
+      "system": "url",
+      "value": "https://line.me/ti/p/xt5y02jFvk"
+    } ],
+    "address": {
+      "text": "721 臺灣省臺南市麻豆區育英路7段3號",
+      "line": [ "育英路7段3號" ],
+      "city": "麻豆區",
+      "district": "臺南市",
+      "postalCode": "721",
+      "country": "臺灣省"
+    },
+    "gender": "male"
+  }, {
+    "relationship": [ {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+        "code": "C"
+      } ],
+      "text": "Emergency Contact"
+    } ],
+    "name": {
+      "text": "廖婷婷",
+      "family": "廖",
+      "given": [ "婷婷" ]
+    },
+    "telecom": [ {
+      "system": "email",
+      "value": "wenna@gmail.com"
+    }, {
+      "system": "phone",
+      "value": "0913746099",
+      "use": "mobile"
+    }, {
+      "system": "url",
+      "value": "https://line.me/ti/p/ROUE6LPN7d"
+    } ],
+    "address": {
+      "text": "235 臺灣省新北市中和區中央街6段12號",
+      "line": [ "中央街6段12號" ],
+      "city": "中和區",
+      "district": "新北市",
+      "postalCode": "235",
+      "country": "臺灣省"
+    },
+    "gender": "other"
+  } ]
+}

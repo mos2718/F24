@@ -1,0 +1,13 @@
+ { "resourceType": "Patient",
+  "identifier": [ {
+    "system": "https://www.dicom.org.tw/cs/ResidentNumber_tw",
+    "value": "UB20000020"
+  } ],
+  "active": true,
+  "name": [ {
+    "text": "黃久東",
+    "family": "黃",
+    "given": [ "久東" ]
+  } ],
+  "gender": "female",
+  "birthDate": "1980-02-25"}
