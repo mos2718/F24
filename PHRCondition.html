@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+
+  <script src="setting.js"></script>
+  <script src="Cookie.js"></script>
+  <script src="HTTP2024.js"></script> 
+  <script src="dateTime.js"></script> 
+</head>
+
+<body style="height: 780px">
+  FHIR patient id:
+  <input type="text" value="unknown" id="FHIRPtionID" /> <br />
+
+  <p>個人健康問題回應</p>
+
+  <input id="Button1" onclick="postData()" type="button" value="postData" /><br />
+  <label id= "condictionName"> 哮喘:</label> <input type="checkbox" id="Con1" >&nbsp;&nbsp;
+  嚴重程度:
+  <input id="Con1Mild" type="radio" name="severity" value="Mild">輕度 &nbsp;
+  <input id="Con1Moderate" type="radio" name="severity" value="Moderate"> 中度&nbsp;
+  <input id="Con1Severe" type="radio" name="severity" value="Severe"> 重度 &nbsp;&nbsp;
+  <label > 發病時間( eg. 2024-02-16):</label> 
+  <input type="text" id="Con1Age" /> <br />
+
+
+
+</body>
+<script>
+  document.getElementById("FHIRPtionID").value = getCookie("patientID");
+ // document.getElementById("name").value = getCookie("patientName");
+ 
+ //var conditionCode = {  "category" : "overall-feeling",  "code":  "poorAppetite", "display": "食慾不振", "onSetType":"onsetString"    }
+ var conditionCode = {  "category" : "ear",  "code":  "tinnitus", "display": "耳鳴", "onSetType":"onsetDateTime"    }
+ document.getElementById("condictionName").innerHTML =  conditionCode.display +":";
+
+  var myObj = {
+    "resourceType": "Condition",
+    "clinicalStatus" : {
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code" : "active"
+    }]
+    },
+
+    "category" : [{
+    "coding" : [{
+      "system" : "https://misac.ondition.category",
+      "code" : "",
+      "display" : ""
+    }]  }],
+    "code": {
+      "coding": [
+        {
+          "system": "https://misac.phr.healthcare.condition",
+         // "system": "https://misac.phr.social.condition",
+          "code": "195917001",
+          "display": "asthma"
+        }
+      ],
+      "text": "asthma"
+    },
+    "severity": {
+      "coding": [
+        {
+          "system": "http://MISAT.org.tw/conSeverity",
+          "code": "moderate",
+          "display": "moderate"
+        }
+      ]
+    },
+    "subject": {
+      "reference": "Patient/addPatientID"
+    },
+   "onsetDateTime" : "2013-04-02",
+   "recordedDate" : "2013-04-04",
+  
+  };
+
+
+
+
+  function postData() {
+
+
+   if (document.getElementById("Con1").checked == true) {
+
+      myObj.recordedDate =  getFormattedTime();
+      myObj.subject.reference = "Patient/" + document.getElementById("FHIRPtionID").value;
+      myObj.onsetDateTime = document.getElementById("Con1Age").value;
+      // myObj.onsetAge.value = document.getElementById("Con1Age").value;
+     // myObj.onsetAge.code = "abc";
+     myObj.category[0].coding[0].code =conditionCode.category;
+     myObj.category[0].coding[0].display =conditionCode.category; 
+     myObj.code.coding[0].code =conditionCode.code;
+     myObj.code.coding[0].display =conditionCode.display;
+      if (document.getElementById("Con1Mild").checked == true) {
+        myObj.severity.coding[0].code = "Mild";
+        myObj.severity.coding[0].display = "Mild";
+      }
+      if (document.getElementById("Con1Moderate").checked == true) {
+        myObj.severity.coding[0].code = "Moderate";
+        myObj.severity.coding[0].display = "Moderate";
+      }
+      if (document.getElementById("Con1Severe").checked == true) {
+        myObj.severity.coding[0].code = "Severe";
+        myObj.severity.coding[0].display = "Severe";
+      }
+
+      var jsonStr = JSON.stringify(myObj);
+      alert(jsonStr);
+
+      var apiURL;
+      apiURL = FHIRrootURL + '/' + "Condition";
+      sendHttpPost(apiURL, jsonStr, callBack);
+
+    }
+  }
+      
+   function callBack(ret) {
+      alert(  ret);
+      //      document.getElementById("TextArea2").value = ret;
+        }
+
+
+ // }
+
+
+</script>
+
+</html>
